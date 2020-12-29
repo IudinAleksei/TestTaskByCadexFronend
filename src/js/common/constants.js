@@ -7,4 +7,4 @@ export const CLASS_LIST = Object.freeze({
   sizeInput: 'size-form__label__input',
 });
 
-export const API_URL = '';
+export const API_URL = 'https://iudin.herokuapp.com/';
