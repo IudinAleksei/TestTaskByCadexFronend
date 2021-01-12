@@ -2,7 +2,7 @@
   pointer-events: none;  
   display: flex;
   position: absolute;
-  height: 100%;
+  height: calc(100vh - 80px);
   width: 100%;
   left: 0;
   align-items: center;

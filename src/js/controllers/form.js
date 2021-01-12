@@ -1,5 +1,6 @@
 import { CLASS_LIST } from '../common/constants';
 import requestToApi from '../model/network';
+import render3d from '../views/3drender';
 
 const parseSizeFromInputs = () => {
   const inputs = Array.from(document.querySelectorAll(`.${CLASS_LIST.sizeInput}`));
@@ -16,7 +17,10 @@ const formClickHander = () => {
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     const sizesString = parseSizeFromInputs();
-    console.log(await requestToApi(sizesString));
+
+    const verts = await requestToApi(sizesString);
+
+    render3d(verts);
   });
 };
 

@@ -4,7 +4,8 @@
 	justify-content: center;
 	background-color: $sleek_grey;
 	width: 100%;
-	height: 80px;
+  height: 80px;
+  flex-shrink: 0;
 }
 
 .size-form__label {
