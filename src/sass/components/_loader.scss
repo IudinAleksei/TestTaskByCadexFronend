@@ -1,5 +1,4 @@
-.lds-ring {
-  pointer-events: none;  
+.lds-ring {  
   display: flex;
   position: absolute;
   height: calc(100vh - 80px);
@@ -7,6 +6,7 @@
   left: 0;
   align-items: center;
   justify-content: center;
+  background-color: $marine;
   @extend %transition;
 }
 .lds-ring div {
@@ -37,4 +37,9 @@
   100% {
     transform: rotate(360deg);
   }
+}
+
+.hidden {
+  opacity: 0;
+  pointer-events: none;
 }

@@ -7,11 +7,13 @@ export const CLASS_LIST = Object.freeze({
   sizeInput: 'size-form__label__input',
   canvasContainer: 'canvas-container',
   canvas: 'canvas',
+  hidden: 'hidden',
 });
 
 export const COLORS = Object.freeze({
-  sceneBackground: 0xdddddd,
-  lineColor: 0xee0000,
+  sceneBackground: 0xc5c5cf,
+  lineColor: 0x015249,
+  faceColor: 0x57bc90,
 });
 
 export const API_URL = 'https://iudin.herokuapp.com/';

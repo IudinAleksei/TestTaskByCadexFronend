@@ -1,5 +1,6 @@
-import formClickHander from './js/controllers/form';
+import { formClickHander, resizeHandler } from './js/controllers/controller';
 
 window.onload = () => {
   formClickHander();
+  resizeHandler();
 };

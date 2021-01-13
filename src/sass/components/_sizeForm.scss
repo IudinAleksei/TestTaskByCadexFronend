@@ -6,6 +6,8 @@
 	width: 100%;
   height: 80px;
   flex-shrink: 0;
+  border-bottom: 2px solid $forest;
+  box-sizing: border-box;
 }
 
 .size-form__label {

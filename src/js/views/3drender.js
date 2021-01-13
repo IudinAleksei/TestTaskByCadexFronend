@@ -4,17 +4,27 @@ import { CLASS_LIST, COLORS } from '../common/constants';
 
 const drawTriangle = (triangle) => {
   const material = new THREE.LineBasicMaterial({ color: COLORS.lineColor });
-  const points = [];
 
+  const geometry = new THREE.Geometry();
   triangle.forEach((vert) => {
-    points.push(new THREE.Vector3(...vert));
+    geometry.vertices.push(new THREE.Vector3(...vert));
   });
 
-  const geometry = new THREE.BufferGeometry().setFromPoints(points);
+  const normal = new THREE.Vector3(1, 0, 0);
+  const face = new THREE.Face3(0, 1, 2, normal);
 
-  const line = new THREE.LineLoop(geometry, material);
+  geometry.faces.push(face);
 
-  return line;
+  // geometry.computeFaceNormals();
+  // geometry.computeVertexNormals();
+  const faceMaterial = new THREE.MeshBasicMaterial({ color: COLORS.faceColor });
+
+  const element = new THREE.Mesh(geometry, faceMaterial);
+
+  const edges = new THREE.EdgesGeometry(geometry);
+  const line = new THREE.LineSegments(edges, material);
+
+  return [line, element];
 };
 
 const render3d = (verts) => {
@@ -34,17 +44,18 @@ const render3d = (verts) => {
   canvas.classList.add(CLASS_LIST.canvas);
   canvasContainer.append(canvas);
 
-  camera.position.z = 600;
+  camera.position.z = 400;
 
   const color = 0xFFFFFF;
   const intensity = 1;
   const light = new THREE.DirectionalLight(color, intensity);
-  light.position.set(-100, 200, 400);
+  light.position.set(100, 200, 400);
   scene.add(light);
 
   verts.forEach((triangle) => {
-    const mesh = drawTriangle(triangle);
+    const [mesh, face] = drawTriangle(triangle);
     scene.add(mesh);
+    scene.add(face);
   });
 
   const controls = new OrbitControls(camera, canvas);

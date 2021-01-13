@@ -18,13 +18,13 @@
     <div class="wrapper main-wrapper">
       <form action="get" class="size-form">
         <label class="size-form__label"> X:
-          <input class="size-form__label__input" data-size="x" type="text" inputmode="numeric" pattern="\d+" placeholder="length" size="10" tabindex="10" required> 
+          <input class="size-form__label__input" value="100" data-size="x" type="text" inputmode="numeric" pattern="\d+" placeholder="length" size="10" tabindex="10" required> 
         </label>
         <label class="size-form__label"> Y:
-          <input class="size-form__label__input" data-size="y" type="text" inputmode="numeric" pattern="\d+" placeholder="width" size="10" tabindex="20" required>
+          <input class="size-form__label__input" value="100" data-size="y" type="text" inputmode="numeric" pattern="\d+" placeholder="width" size="10" tabindex="20" required>
         </label>
         <label class="size-form__label"> Z:
-          <input class="size-form__label__input" data-size="z" type="text" inputmode="numeric" pattern="\d+" placeholder="height" size="10" tabindex="30" required>
+          <input class="size-form__label__input" value="100" data-size="z" type="text" inputmode="numeric" pattern="\d+" placeholder="height" size="10" tabindex="30" required>
         </label>
         <button class="size-form__button button" data-action="send" tabindex="40">Draw box</button>
       </form>
@@ -32,7 +32,7 @@
       <div class="canvas-container">
 
       </div>
-      <div class="lds-ring"><div></div><div></div><div></div><div></div></div>          
+      <div class="lds-ring hidden"><div></div><div></div><div></div><div></div></div>          
     </div>    
   </main>    
 </body>

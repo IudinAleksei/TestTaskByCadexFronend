@@ -1,6 +1,18 @@
 import { CLASS_LIST } from '../common/constants';
 import requestToApi from '../model/network';
+import { hideLoader, unhideLoader } from '../views/loader';
 import render3d from '../views/3drender';
+
+const STATE = {
+  verts: null,
+};
+
+export const resizeHandler = () => {
+  window.addEventListener('resize', () => {
+    if (!STATE.verts) return;
+    render3d(STATE.verts);
+  });
+};
 
 const parseSizeFromInputs = () => {
   const inputs = Array.from(document.querySelectorAll(`.${CLASS_LIST.sizeInput}`));
@@ -12,16 +24,16 @@ const parseSizeFromInputs = () => {
   return boxSizes.slice(1);
 };
 
-const formClickHander = () => {
+export const formClickHander = () => {
   const form = document.querySelector(`.${CLASS_LIST.sizeForm}`);
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
+    unhideLoader();
     const sizesString = parseSizeFromInputs();
 
-    const verts = await requestToApi(sizesString);
+    STATE.verts = await requestToApi(sizesString);
+    hideLoader();
 
-    render3d(verts);
+    render3d(STATE.verts);
   });
 };
-
-export default formClickHander;
