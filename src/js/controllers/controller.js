@@ -2,6 +2,7 @@ import { CLASS_LIST } from '../common/constants';
 import requestToApi from '../model/network';
 import { hideLoader, unhideLoader } from '../views/loader';
 import render3d from '../views/3drender';
+import { hideMessage, showMessage } from '../views/message';
 
 const STATE = {
   verts: null,
@@ -29,10 +30,24 @@ export const formClickHander = () => {
   form.addEventListener('submit', async (event) => {
     event.preventDefault();
     unhideLoader();
+    hideMessage();
     const sizesString = parseSizeFromInputs();
 
-    STATE.verts = await requestToApi(sizesString);
+    const response = await requestToApi(sizesString);
+
     hideLoader();
+
+    if (response === 'Connection error') {
+      showMessage(response);
+      return;
+    }
+
+    if (response === 'Incorrect box sizes') {
+      showMessage(response);
+      return;
+    }
+
+    STATE.verts = response;
 
     render3d(STATE.verts);
   });

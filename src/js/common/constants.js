@@ -8,6 +8,7 @@ export const CLASS_LIST = Object.freeze({
   canvasContainer: 'canvas-container',
   canvas: 'canvas',
   hidden: 'hidden',
+  message: 'message',
 });
 
 export const COLORS = Object.freeze({
