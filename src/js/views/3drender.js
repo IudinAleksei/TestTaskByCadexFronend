@@ -3,20 +3,20 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 import { CLASS_LIST, COLORS } from '../common/constants';
 
 const drawTriangle = (triangle) => {
-  const material = new THREE.LineBasicMaterial({ color: COLORS.lineColor });
+  const material = new THREE.LineBasicMaterial({
+    color: COLORS.lineColor,
+    linewidth: 3,
+  });
 
   const geometry = new THREE.Geometry();
   triangle.forEach((vert) => {
     geometry.vertices.push(new THREE.Vector3(...vert));
   });
 
-  const normal = new THREE.Vector3(1, 0, 0);
-  const face = new THREE.Face3(0, 1, 2, normal);
+  const face = new THREE.Face3(0, 1, 2);
 
   geometry.faces.push(face);
 
-  // geometry.computeFaceNormals();
-  // geometry.computeVertexNormals();
   const faceMaterial = new THREE.MeshBasicMaterial({ color: COLORS.faceColor });
 
   const element = new THREE.Mesh(geometry, faceMaterial);
@@ -46,15 +46,9 @@ const render3d = (verts) => {
 
   camera.position.z = 400;
 
-  const color = 0xFFFFFF;
-  const intensity = 1;
-  const light = new THREE.DirectionalLight(color, intensity);
-  light.position.set(100, 200, 400);
-  scene.add(light);
-
   verts.forEach((triangle) => {
-    const [mesh, face] = drawTriangle(triangle);
-    scene.add(mesh);
+    const [line, face] = drawTriangle(triangle);
+    scene.add(line);
     scene.add(face);
   });
 
