@@ -25,9 +25,9 @@ JS-код также разбит на модули, также подключа
 Если от сервера пришло сообщение "Incorrect box sizes", то вместо отрисовки куба отображается это сообщение.
 
 ## Примечания:
-•	Для стилизации использован SCSS и normalize.scss
-•	Исходный код клиента размещен в публичном репозитории на github: https://github.com/IudinAleksei/TestTaskByCadexFronend/tree/develop
-•	Исходный код сервера размещен в публичном репозитории на github: https://github.com/IudinAleksei/TestTaskByCadexBackend
-•	Приложение  развернуто и доступно по ссылке: https://test-by-cadex.netlify.app/
+-	Для стилизации использован SCSS и normalize.scss
+-	Исходный код клиента размещен в публичном репозитории на github: https://github.com/IudinAleksei/TestTaskByCadexFronend/tree/develop
+-	Исходный код сервера размещен в публичном репозитории на github: https://github.com/IudinAleksei/TestTaskByCadexBackend
+-	Приложение  развернуто и доступно по ссылке: https://test-by-cadex.netlify.app/
 
 
